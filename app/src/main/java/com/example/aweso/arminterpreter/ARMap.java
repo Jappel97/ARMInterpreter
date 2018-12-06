@@ -1,10 +1,14 @@
 package com.example.aweso.arminterpreter;
 
+import android.widget.EditText;
+
 import java.util.Arrays;
 
 public class ARMap
 {
     //Final Fields
+    public static EditText instructionET;
+    public static String instructionToAdd = "";
     public static final int MEMORY_SIZE = 64;
     private static String[] instructions = {"ADD", "SUB"};
     private static int[] instructionMappings = {1112, 1624};

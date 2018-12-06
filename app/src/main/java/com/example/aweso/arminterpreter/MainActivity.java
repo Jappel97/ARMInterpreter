@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
-    private EditText instructionET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +16,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         ARMap.init();
 
-        this.instructionET = (EditText)this.findViewById(R.id.instructionET);
+        ARMap.instructionET = (EditText)this.findViewById(R.id.instructionET);
         //ARMap.lookupInstruction("ADD").display();
     }
 
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity
         //For example, if instructionET contained: ADD X0, X1, X2
         //Your code should grab the value from X1 and X2, add them
         //together, and store the result in X0
-        String s = this.instructionET.getText().toString();
+        String s = ARMap.instructionET.getText().toString();
         String[] instructions = s.split("\n");
         System.out.println(instructions.length);
         for(int i = 0; i < instructions.length; i++)
@@ -59,17 +58,17 @@ public class MainActivity extends AppCompatActivity
 
     public void clearButtonPressed(View v)
     {
-        this.instructionET.setText("");
+        ARMap.instructionET.setText("");
     }
 
     public void removeLastButtonPressed(View v)
     {
-        String[] instructions = this.instructionET.getText().toString().split("\n");
+        String[] instructions = ARMap.instructionET.getText().toString().split("\n");
         String answer = instructions[0];
         for(int i = 1; i < instructions.length-1; i++)
         {
             answer = answer + "\n" + instructions[i];
         }
-        this.instructionET.setText(answer);
+        ARMap.instructionET.setText(answer);
     }
 }
